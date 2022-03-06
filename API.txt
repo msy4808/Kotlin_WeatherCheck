@@ -1,0 +1,15 @@
+날씨정보 API : https://www.data.go.kr/iim/api/selectAPIAcountView.do
+
+데이터 포맷 : JSON + XML
+
+End Point : 	http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0
+
+일반 인증키
+(Encoding)
+
+cpVd0XVxRJc7AnOXKxyhIPzPCjSAiTnYPt%2FJURg%2BL7ljxcUtuC8Y9SBMcg2I%2BEEKgbFGLSe8r2IPI7Ox10cwig%3D%3D
+
+일반 인증키
+(Decoding)	
+
+cpVd0XVxRJc7AnOXKxyhIPzPCjSAiTnYPt/JURg+L7ljxcUtuC8Y9SBMcg2I+EEKgbFGLSe8r2IPI7Ox10cwig==
