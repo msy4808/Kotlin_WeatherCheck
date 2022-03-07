@@ -13,3 +13,7 @@ cpVd0XVxRJc7AnOXKxyhIPzPCjSAiTnYPt%2FJURg%2BL7ljxcUtuC8Y9SBMcg2I%2BEEKgbFGLSe8r2
 (Decoding)	
 
 cpVd0XVxRJc7AnOXKxyhIPzPCjSAiTnYPt/JURg+L7ljxcUtuC8Y9SBMcg2I+EEKgbFGLSe8r2IPI7Ox10cwig==
+
+GPS
+
+안드로이드에서 제공하는  LocationManager 이용
