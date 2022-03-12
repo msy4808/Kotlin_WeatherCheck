@@ -1,6 +1,8 @@
 package com.moon.kotlin_weathercheck
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationRequest
@@ -70,9 +72,16 @@ class MainActivity : AppCompatActivity() {
     }
     fun onLocationChanged(location: Location) {
         mLastLocation = location
+        var intent = Intent(this, MapsActivity::class.java)
 
         text1.text = "위도 : ${mLastLocation.latitude}" //위도 갱신
         text2.text = "경도 : ${mLastLocation.longitude}" //경도 갱신
+
+        intent.putExtra("위도", mLastLocation.latitude)
+        intent.putExtra("경도", mLastLocation.longitude)
+
+        startActivity(intent)
+
     }
 
     //위치권한이 있는지 확인하는 메서드
