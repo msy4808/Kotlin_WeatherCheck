@@ -14,7 +14,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.moon.kotlin_weathercheck.databinding.ActivityMapsBinding
 import kotlin.properties.Delegates
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback { //지도 왜함 나... 필요한가 이거...
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
