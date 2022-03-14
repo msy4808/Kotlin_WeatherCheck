@@ -1,5 +1,6 @@
 package com.moon.kotlin_weathercheck
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,19 +12,20 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.moon.kotlin_weathercheck.databinding.ActivityMapsBinding
+import kotlin.properties.Delegates
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-
+    lateinit var mIntent:Intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mIntent = intent
 
-        var intent = intent
 
         Log.d("Maps","전달받은 경도 : ${intent.getDoubleExtra("경도", 0.0)}")
         Log.d("Maps","전달받은 위도 : ${intent.getDoubleExtra("위도", 0.0)}")
@@ -47,7 +49,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
+        val sydney = LatLng(intent.getDoubleExtra("위도", 0.0), intent.getDoubleExtra("경도", 0.0))
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
