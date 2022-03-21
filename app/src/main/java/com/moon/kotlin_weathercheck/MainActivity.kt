@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationRequest
 import android.os.Build
@@ -30,13 +31,11 @@ class MainActivity : AppCompatActivity() {
     private val REQUEST_PERMISSION_LOCATION = 10
 
     lateinit var text1:TextView
-    lateinit var text2:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         text1 = findViewById<TextView>(R.id.text1)
-        text2 = findViewById<TextView>(R.id.text2)
         val btn = findViewById<Button>(R.id.location_btn)
 
         mLocationRequest = com.google.android.gms.location.LocationRequest.create().apply {
@@ -68,19 +67,21 @@ class MainActivity : AppCompatActivity() {
             //시스템에서 받은 location 정보를 onLocationChanged()로 전달
             p0.lastLocation
             onLocationChanged(p0.lastLocation)
+
         }
     }
     fun onLocationChanged(location: Location) {
-        mLastLocation = location
-        var intent = Intent(this, MapsActivity::class.java)
+        try {
+            mLastLocation = location
+            val geo = Geocoder(application.applicationContext)
+            val address = geo.getFromLocation(mLastLocation.latitude, mLastLocation.longitude, 1)
+            text1.text = "내위치 : ${address[0]}"
 
-        text1.text = "위도 : ${mLastLocation.latitude}" //위도 갱신
-        text2.text = "경도 : ${mLastLocation.longitude}" //경도 갱신
-
-        intent.putExtra("위도", mLastLocation.latitude)
-        intent.putExtra("경도", mLastLocation.longitude)
-
-        startActivity(intent)
+            intent.putExtra("위도", mLastLocation.latitude)
+            intent.putExtra("경도", mLastLocation.longitude)
+        }catch (e:Exception){
+            Log.d("Error", e.stackTraceToString())
+        }
 
     }
 

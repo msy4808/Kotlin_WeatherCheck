@@ -30,12 +30,6 @@
         android:layout_height="wrap_content"
         android:text="위도 : "
         android:layout_margin="20dp"/>
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="경도 : "
-        android:layout_margin="20dp"/>
 
     <Button
         android:id="@+id/location_btn"
